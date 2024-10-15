@@ -1,4 +1,4 @@
-DEPLOYMENT INSTRUCTIONS: 
+**DEPLOYMENT INSTRUCTIONS**: 
  
 This project has been deployed on Hugging Face Spaces.These are the instructions to access and deploy the app:
 
@@ -47,25 +47,47 @@ Monitoring and Logs:
 Hugging Face Spaces provides an interactive console where you can monitor logs and debug any issues in real-time.
 Check the Logs tab in your Space to troubleshoot any potential problems.
 
-TECHNICAL DOCUMENTATION: 
+**TECHNICAL DOCUMENTATION**: 
 
 Overview
 
 This project consists of two main components:
 
-Audio Generation:
+1. Audio Generation:
 Model: Facebook's MusicGen is used for converting text prompts provied by the user into audio.
 Output: Generated music is saved as a .wav file, which can be played in the app or downloaded.
 
-Image Generation:
+2. Image Generation:
 Model: The project uses the CompVis/stable-diffusion-v1-4 (or Stable Diffusion) from the Hugging Face model repository for image generation.
 Output: Generated images are displayed in the app and can be downloaded in .png format.
 
+Technical Breakdown
+
+1. Model Selection:
+
+   - MusicGen: Chosen for its ability to generate high-quality music based on text prompts. It provides pre-trained models optimized for various music styles.
+
+   - Stable Diffusion : Used for text-to-image generation due to its robust results.
+
+2. Streamlit Integration:
+
+   - Streamlit was chosen for its ease of use and quick deployment capabilities. Its multipage functionality allowed us to easily switch between the two main features: music and image generation.
+
+3. UI Design:
+
+   - The interface is designed to be minimal yet visually appealing, with custom CSS for a polished look. Users are guided step-by-step to enter their prompts and receive outputs.   
+
+
 Core Libraries
+
 Streamlit: Used for building the user interface.
+
 Diffusers: For loading and running the text-to-image diffusion models.
+
 Transformers: Used for loading and running the MusicGen model.
+
 Torch: Backend for handling model inference and GPU acceleration.
+
 Scipy: For handling .wav file outputs from the MusicGen model.
 
 File Structure:
@@ -99,19 +121,42 @@ Users enter a description of the image they want.
 The DiffusionPipeline model is used to convert this text into an image using the selected diffusion model (e.g., Stable Diffusion).
 The generated image is displayed and can be downloaded.
 
-CHALLENGES FACED:
+**CHALLENGES FACED**:
 
 1. Model Availability:
-One of the initial challenges was finding the correct model (Stable Diffusion and MusicGen) for the given task and making sure it was open source.
+Some models were unavailable or private, so alternative models had to be identified. One of the other challenges was finding the correct model (Stable Diffusion and MusicGen) for the given task and making sure it was open source.
 
 2. Model Inference Time:
 Generating images using large image generation models can be time-consuming. These models took a while to produce output because they were directly accessed from Hugging Face without being downloaded to the local system, as they are quite large. To address this, we added informative messages to the user interface to let users know that the process might take a few seconds.
 
 
-APPROACH:
+**APPROACH**:
+
+Problem Statement: The objective was to develop a user-friendly web interface enabling users to generate various outputs from text-based machine learning models. The main challenge was to seamlessly integrate these models into an intuitive  web interface for easy input. My primary model is a text-to-audio generation model. Moreover, I have also developed a text-to-image generation model and integrated both into a multi-page Streamlit application. 
+
 
 Streamlined UI: The project focuses on keeping the interface simple and intuitive. Users can easily switch between music and image generation using a multi-page layout in Streamlit. Custom CSS was applied to ensure the interface is visually appealing.
 
 Modular Code: The project is broken into separate components for music and image generation, allowing for easy maintenance and future scalability.
 
 Error Handling: Each component includes error handling to manage potential issues with model loading, inference, or file handling. Users are notified if something goes wrong, ensuring a smooth experience.
+
+**ADDITIONAL NOTES**
+
+Future Improvements:
+
+1. Quantization: We plan to implement quantized models to achieve faster inference and reduce memory usage. This improvement will be particularly beneficial for resource-intensive image-generation models.
+
+2. Feedback Mechanism: Implementing user feedback mechanisms to improve generated content.
+
+3. Integration with cloud services: Integrating with cloud services for faster model inference and improved scalability.
+
+**REFRENCES**:
+
+Hugging Face Models
+
+Diffusers Library Documentation
+
+MusicGen
+
+Stable Diffusion
