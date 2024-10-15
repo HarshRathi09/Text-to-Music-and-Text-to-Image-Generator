@@ -48,7 +48,9 @@ Hugging Face Spaces provides an interactive console where you can monitor logs a
 Check the Logs tab in your Space to troubleshoot any potential problems.
 
 TECHNICAL DOCUMENTATION: 
+
 Overview
+
 This project consists of two main components:
 
 Audio Generation:
@@ -66,19 +68,27 @@ Transformers: Used for loading and running the MusicGen model.
 Torch: Backend for handling model inference and GPU acceleration.
 Scipy: For handling .wav file outputs from the MusicGen model.
 
-File Structure
-├── requirements.txt          # Python dependencies
-├── main.py                   # Main entry point for the Streamlit app
-├── musicgen.py 
-├── pages/
-│   ├── Music_Generator.py     # Music generation page
-│   ├── Image_Generator.py     # Image generation page
-├── README.md                 
+File Structure:
 
+├── requirements.txt          # Python dependencies
+
+├── main.py                   # Main entry point for the Streamlit app
+
+├── musicgen.py 
+
+├── pages/                     # subdirectory  consisting of Music_Generator.py (Music generation page) and Image_Generator.py (Image generation page) 
+   
+    ├── Music_Generator.py     # Music generation page
+   
+    ├── Image_Generator.py     # Image generation page
+├── README.md                 
+               
 Model Loading
+
 Both the MusicGen and Image Generation models are loaded using the Hugging Face from_pretrained() function. This allows for easy integration with the Hugging Face model repository.
 
 How It Works
+
 Audio Generation:
 Users provide a text prompt describing the type of audio they want.
 The MusicGen model processes this input and generates a waveform that is converted into a .wav file.
@@ -98,7 +108,8 @@ One of the initial challenges was finding the correct model (Stable Diffusion an
 Generating images using large image generation models can be time-consuming. These models took a while to produce output because they were directly accessed from Hugging Face without being downloaded to the local system, as they are quite large. To address this, we added informative messages to the user interface to let users know that the process might take a few seconds.
 
 
-APPROACH: 
+APPROACH:
+
 Streamlined UI: The project focuses on keeping the interface simple and intuitive. Users can easily switch between music and image generation using a multi-page layout in Streamlit. Custom CSS was applied to ensure the interface is visually appealing.
 
 Modular Code: The project is broken into separate components for music and image generation, allowing for easy maintenance and future scalability.
